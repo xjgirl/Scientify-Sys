@@ -1,24 +1,18 @@
 package com.wzxy.scientify.entity;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.Objects;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "t_user", schema = "sciencedb", catalog = "")
-@IdClass(UserPK.class)
-public class User {
+
+public class User implements Serializable{
+    private int id;
     private String userId;
     private String userName;
     private String password;
-
-    private int id;
     private Integer userType;
     private Integer userStatus;
     private Timestamp createTime;
@@ -26,6 +20,16 @@ public class User {
     private Timestamp loginTime;
     private Integer isDel;
     private Integer authId;
+
+    @Id
+    @Column(name = "id")
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     @Id
     @Column(name = "userId")
@@ -55,39 +59,6 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        User user = (User) o;
-
-        if (userId != null ? !userId.equals(user.userId) : user.userId != null) return false;
-        if (userName != null ? !userName.equals(user.userName) : user.userName != null) return false;
-        if (password != null ? !password.equals(user.password) : user.password != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = userId != null ? userId.hashCode() : 0;
-        result = 31 * result + (userName != null ? userName.hashCode() : 0);
-        result = 31 * result + (password != null ? password.hashCode() : 0);
-        return result;
-    }
-
-
-    @Id
-    @Column(name = "id")
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     @Basic
@@ -158,5 +129,28 @@ public class User {
 
     public void setAuthId(Integer authId) {
         this.authId = authId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return id == user.id &&
+                Objects.equals(userId, user.userId) &&
+                Objects.equals(userName, user.userName) &&
+                Objects.equals(password, user.password) &&
+                Objects.equals(userType, user.userType) &&
+                Objects.equals(userStatus, user.userStatus) &&
+                Objects.equals(createTime, user.createTime) &&
+                Objects.equals(modifyTime, user.modifyTime) &&
+                Objects.equals(loginTime, user.loginTime) &&
+                Objects.equals(isDel, user.isDel) &&
+                Objects.equals(authId, user.authId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, userId, userName, password, userType, userStatus, createTime, modifyTime, loginTime, isDel, authId);
     }
 }

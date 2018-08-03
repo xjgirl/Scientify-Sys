@@ -1,5 +1,7 @@
 package com.wzxy.scientify.dao;
+
 import com.wzxy.scientify.entity.User;
+
 import java.util.List;
 
 public interface IUserDao {

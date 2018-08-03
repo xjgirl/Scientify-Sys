@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
-  Date: 2018/7/31
-  Time: 20:52
+  Date: 2018/8/3
+  Time: 22:34
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -137,12 +137,12 @@
     </div>
 </header>
 <div class="am-slider am-slider-default" data-am-flexslider id="demo-slider-0"  id="about">
-<ul class="am-slides">
-    <li><img src="img/001.jpg" /></li>
-    <li><img src="img/003.jpg" /></li>
-    <li><img src="img/004.jpg" /></li>
-    <li><img src="img/005.jpg" /></li>
-</ul>
+    <ul class="am-slides">
+        <li><img src="img/001.jpg" /></li>
+        <li><img src="img/003.jpg" /></li>
+        <li><img src="img/004.jpg" /></li>
+        <li><img src="img/005.jpg" /></li>
+    </ul>
 </div>
 <div class="detail" id="teacher">
     <div class="am-g am-container">

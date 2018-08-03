@@ -12,8 +12,7 @@ import java.util.Map;
 
 @Controller("userAction")
 @Scope("prototype")
-public class UserAction  extends ActionSupport {
-
+public class UserAction extends ActionSupport {
     private static final long serialVersionUID = -4543142472432152186L;
 
     @Resource
